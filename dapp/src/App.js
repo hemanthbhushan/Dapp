@@ -39,14 +39,13 @@ let updateEthers=()=>{
   let tempContract = new ethers.Contract(contract_address,SimpleStore_abi,tempSigner);
   setContract(tempContract);
 }
-
-let getValue = async()=>{
+const getValue = async()=>{
   let x = await contract.retrieve();
   setCurrentContractVal(x);
 }
-let setHandler = (events)=>{
+const setHandler = async (events)=>{
   events.preventDefault();
-  contract.set(events.target.setText.value);
+  await contract.set(events.target.setText.value);
 }
 
 
